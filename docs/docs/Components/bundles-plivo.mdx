@@ -1,0 +1,49 @@
+---
+title: Plivo
+slug: /bundles-plivo
+---
+
+import Icon from "@site/src/components/icon";
+
+[Plivo](https://www.plivo.com/) is a cloud communications platform that provides SMS messaging and voice calling APIs.
+
+Your flows can use the **Plivo** bundle components to send SMS messages and place outbound phone calls with your Plivo account.
+
+Both components authenticate with a Plivo **Auth ID** and **Auth Token**, which you can find in the [Plivo console](https://console.plivo.com/).
+For more information, see the [Plivo API documentation](https://www.plivo.com/docs/).
+
+## Plivo Send SMS
+
+The **Plivo Send SMS** component sends an SMS message through the [Plivo Messaging API](https://www.plivo.com/docs/messaging/api/message).
+
+1. Add the **Plivo Send SMS** component to your flow, and then configure it as follows:
+
+    * **Plivo Auth ID** and **Plivo Auth Token**: Enter the credentials for your Plivo account.
+    * **From Number**: Enter the sender ID. This is a Plivo phone number, short code, or, where permitted, an alphanumeric sender ID.
+    * **To Number**: Enter the recipient's phone number in E.164 format, such as `+14150000001`.
+    * **Message**: Enter the text body of the message to send.
+
+2. Connect the component to other components in your flow.
+The component can be used as a standalone step in a flow or as a tool for an agent.
+
+    To enable **Tool Mode** for this component, change the component's output type from **Output** to **Tool**, and then connect it to the **Tools** port on an **Agent** component.
+
+    The component returns Plivo's API response, which includes the message UUID and API request identifier, in Langflow's [`Data` type](/data-types).
+
+## Plivo Make Call
+
+The **Plivo Make Call** component places an outbound phone call through the [Plivo Voice API](https://www.plivo.com/docs/voice/api/call).
+
+1. Add the **Plivo Make Call** component to your flow, and then configure it as follows:
+
+    * **Plivo Auth ID** and **Plivo Auth Token**: Enter the credentials for your Plivo account.
+    * **From Number**: Enter the caller ID. This is a Plivo phone number in E.164 format.
+    * **To Number**: Enter the destination phone number in E.164 format, such as `+14150000001`.
+    * **Answer URL**: Enter a publicly reachable URL that returns Plivo answer XML, such as a `<Speak>` element, when the call is answered.
+
+2. Connect the component to other components in your flow.
+The component can be used as a standalone step in a flow or as a tool for an agent.
+
+    To enable **Tool Mode** for this component, change the component's output type from **Output** to **Tool**, and then connect it to the **Tools** port on an **Agent** component.
+
+    The component returns Plivo's API response, which includes the call request UUID and API request identifier, in Langflow's [`Data` type](/data-types).
